@@ -9,8 +9,5 @@ jobs:
       - name: call checkout action 
         uses: actions/checkout@v1
       - name: list files after checkout
-        run: |
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_WORKSPACE
+        run: echo $GITHUB_SHA
       
