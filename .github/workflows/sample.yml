@@ -3,7 +3,7 @@ name: "First test action"
 on: [push]
 
 jobs:
-  run-shell-command:
+  job1-run-shell-command:
     runs-on: ubuntu-latest
     steps:
       - name: echo a string
@@ -17,3 +17,10 @@ jobs:
           import platform
           print (platform.processor())
         shell: python
+
+
+  job2-run-shell-command:
+    runs-on: windows
+    steps:
+      - name: echo a string
+        run: echo "Hello world"
