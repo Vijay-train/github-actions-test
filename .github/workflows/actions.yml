@@ -4,10 +4,10 @@ on: [push]
 
 jobs:
   checkoutaction:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
-      - name: call checkout action 
-        uses: actions/checkout@v1
+      # - name: call checkout action 
+      #   uses: actions/checkout@v1
       - name: list files after checkout
-        run: echo $GITHUB_SHA
+        run: echo $GITHUB_REPOSITORY
       
