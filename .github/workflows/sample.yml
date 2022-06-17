@@ -21,6 +21,7 @@ jobs:
 
   job2-run-shell-command:
     runs-on: windows-latest
+    needs: [job1-run-shell-command]
     steps:
       - name: echo a string
         run: echo "Hello world"
