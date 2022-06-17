@@ -1,0 +1,14 @@
+name : Workflow uses actions
+
+on: [push]
+
+jobs:
+  checkoutaction:
+    runs-on: windows-latest
+    steps:
+      - name: call checkout action 
+        uses: actions/checkout@v1
+      - name: list files after checkout
+        run: |
+          pwd
+          ls -a
