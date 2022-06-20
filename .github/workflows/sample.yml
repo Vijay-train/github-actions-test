@@ -1,6 +1,6 @@
 name: "First test action"
 
-on: [push]
+# on: [push]
 
 jobs:
   job1-run-shell-command:
