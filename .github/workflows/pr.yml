@@ -1,0 +1,8 @@
+name: Triggers on PR
+on: [pull_request]
+
+jobs:
+  JobOnPR:
+    name: "job on pR"
+    run : echo "Hi - you triggered a PR"
+
