@@ -16,7 +16,7 @@ jobs:
           echo "$Global_Env"
           echo "$Jobs_Env"
           echo "Github action - ${GITHUB_ACTION}"
-          echo "Repo - ${GITHUB_ACTION_REPOSITORY}"
+          echo "Repo - ${GITHUB_EVENT_NAME}"
 
 
 
