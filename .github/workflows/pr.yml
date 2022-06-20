@@ -3,6 +3,8 @@ on: [pull_request]
 
 jobs:
   JobOnPR:
-    name: "job on pR"
-    run : echo "Hi - you triggered a PR"
+    runson: ubuntu-latest
+    steps:
+      -name: "Sample step 1"
+      run : echo "Hi - you triggered a PR"
 
