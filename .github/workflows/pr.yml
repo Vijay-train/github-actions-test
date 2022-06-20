@@ -1,9 +1,10 @@
 name: Triggers on PR
 on:
-  pull_request:
-    types: [opened, closed]
   schedule:
     - cron: '* * * * *'
+  pull_request:
+    types: [opened, closed]
+
 
   
 
@@ -11,6 +12,9 @@ jobs:
   job1-run-shell-command:
     runs-on: ubuntu-latest
     steps:
-      - name: echo a string
+      - name: Step 1
         run: echo "Hello world"
+
+      - name: Step 2
+        run: echo "This is a cron step"
 
