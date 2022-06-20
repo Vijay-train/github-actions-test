@@ -8,5 +8,5 @@ jobs:
     runson: ubuntu-latest
     steps:
       -name: "Sample step 1"
-      run: echo "Hi - you triggered a PR"
+       run: echo "Hi - you triggered a PR"
 
