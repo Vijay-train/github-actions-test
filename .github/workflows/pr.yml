@@ -1,7 +1,5 @@
 name: Triggers on PR
 on:
-  schedule:
-    - cron: "*/6 * * * *"
   pull_request:
     types: [opened, closed]
 
