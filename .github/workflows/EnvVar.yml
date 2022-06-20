@@ -1,13 +1,20 @@
 name: using environment variables
 on: [push]
+env:
+  Global_Env: "Global variable - available everywhere"
 
 jobs:
+
   FirstJob:
     runs-on: ubuntu-latest
+    env:
+      Jobs_Env: "Jobs variable = available in this job"
     steps:
       - name: step1
-        run: echo "first step"
-
+        run: |
+          echo "first step"
+          echo "$Global_Env"
+          echo "$Jobs_Env"
 
 
 
