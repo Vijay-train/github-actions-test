@@ -1,5 +1,7 @@
 name: Triggers on PR
-on: [push, pull_request]
+on: 
+  push:
+  pull_request]:
 
 jobs:
   JobOnPR:

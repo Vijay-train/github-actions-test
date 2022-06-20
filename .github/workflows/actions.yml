@@ -1,6 +1,6 @@
 name : Workflow uses actions
 
-# on: [push]
+on: [delete]
 
 jobs:
   checkoutaction:
