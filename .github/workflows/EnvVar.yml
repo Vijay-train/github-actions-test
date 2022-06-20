@@ -15,8 +15,8 @@ jobs:
           echo "first step"
           echo "$Global_Env"
           echo "$Jobs_Env"
-          echo "$GITHUB_ACTION"
-          echo "$GITHUB_ACTION_REPOSITORY"
+          echo "${GITHUB_ACTION}"
+          echo "${GITHUB_ACTION_REPOSITORY}"
 
 
 
