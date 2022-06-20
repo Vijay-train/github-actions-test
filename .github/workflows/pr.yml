@@ -1,12 +1,10 @@
 name: Triggers on PR
-on: 
-  push:
-  pull_request:
+on: [push]
 
 jobs:
-  JobOnPR:
-    runson: ubuntu-latest
+  job1-run-shell-command:
+    runs-on: ubuntu-latest
     steps:
-      -name: "Sample step 1"
-       run: echo "Hi - you triggered a PR"
+      - name: echo a string
+        run: echo "Hello world"
 
