@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: step1
         run: |
-          echo "Repo secret - ${{secret.MY_FIRST_SECRET}}"
+          echo "Repo secret - ${{secrets.MY_FIRST_SECRET}}"
           echo "first step"
           echo "$Global_Env"
           echo "$Jobs_Env"
