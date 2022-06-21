@@ -1,0 +1,16 @@
+name: "Strategy and matrices"
+on : push
+
+jobs:
+  
+  Strategy_Job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        First_Name: ['John','Ben','Jim']
+        Last_Name: ['vedantham','krishansamy','vijay']
+    steps:
+      - name : echo stragegies
+        run : echo " The full name is ${{matrix.First_Name}} ${{matrix.Last_Name}}"
+
+      
