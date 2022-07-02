@@ -1,5 +1,5 @@
 name: using environment variables
-on: [push]
+on: [pull_request]
 env:
   Global_Env: "Global variable - available everywhere"
 
