@@ -20,9 +20,22 @@ shortTitle: Quickstart
 
 ## Introduction
 
-You only need a {% data variables.product.prodname_dotcom %} repository to create and run a {% data variables.product.prodname_actions %} workflow. In this guide, you'll add a workflow that demonstrates some of the essential features of {% data variables.product.prodname_actions %}. 
+You only need a simple Kubernetes cluster to create and run a workflow. In this guide, you'll add a workflow that targets self hosted runner deployed in your kubernetes cluseter
 
-The following example shows you how {% data variables.product.prodname_actions %} jobs can be automatically triggered, where they run, and how they can interact with the code in your repository.
+
+The following example shows you how a repository runner can be setup on your kubernetes cluster, and how workflows can be triggered on this runner.
+
+"🎉"🎉
+
+## setup your kubernetes cluster
+2. Setup kubernetes cluster ( with minikube link)
+3. Install certmgr
+4. Get a PAT
+
+## Deploy the actions runner in the kubernetes cluster
+
+
+## creating your first workflow targetting the cluster
 
 ## Creating your first workflow
 
