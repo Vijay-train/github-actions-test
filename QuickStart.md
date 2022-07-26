@@ -1,108 +1,26 @@
----
-title: Quickstart for GitHub Actions
-intro: 'Try out the features of {% data variables.product.prodname_actions %} in 5 minutes or less.'
-allowTitleToDifferFromFilename: true
-redirect_from:
-  - /actions/getting-started-with-github-actions/starting-with-preconfigured-workflow-templates
-versions:
-  fpt: '*'
-  ghes: '*'
-  ghae: '*'
-  ghec: '*'
-type: quick_start
-topics:
-  - Fundamentals
-shortTitle: Quickstart
----
-
-{% data reusables.actions.enterprise-beta %}
-{% data reusables.actions.enterprise-github-hosted-runners %}
-
 ## Introduction
 
-You only need a simple Kubernetes cluster to create and run a workflow. In this guide, you'll add a workflow that targets self hosted runner deployed in your kubernetes cluseter
+GitHub Actions can be run in GitHub-hosted cloud or self hosted environments. Self-hosted runners offer more control of hardware, operating system, and software tools than GitHub-hosted runners provide
+
+With just a few configurations, you can set up your kubernetes (K8s) cluster to be a self-hosted environment.In this guide, we will deploy Actions Runner controller (ACR) into your K8s cluster, and then target that cluster to run GitHub Action workflows.
+
+## Step 1: Setup your K8s Environment
+<details><summary>Setup K8s environment</summary>
+If you don't have a K8s environment, you can install a local environment using [minikube]([url](https://minikube.sigs.k8s.io/docs/start/)).
+</details>
+
+1. Run the following kubectl command to install certmgr in your environment. For more information, see [certmgr]([url](https://cert-manager.io/docs/installation/))
+```yaml{:copy}
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.2/cert-manager.yaml
+```
+<sub> This command uses v1.8.2. Please replace with a later version, if available.</sub>
+
+2. Next, we need a Personal Access Token (PAT) for ACR to authenticate with GitHub.
+   - Login to GitHub account and Navigate to https://github.com/settings/tokens/new
+   - Select  repo
+   - Click Generate Token and then copy the token locally ( we’ll need it later) 
+
+👏🏻👏🏻 That’s all the setup we need, next let's deploy and configure ACR
 
 
-The following example shows you how a repository runner can be setup on your kubernetes cluster, and how workflows can be triggered on this runner.
-
-"🎉"🎉
-
-## setup your kubernetes cluster
-2. Setup kubernetes cluster ( with minikube link)
-3. Install certmgr
-4. Get a PAT
-
-## Deploy the actions runner in the kubernetes cluster
-
-
-## creating your first workflow targetting the cluster
-
-## Creating your first workflow
-
-1. Create a `.github/workflows` directory in  your repository on {% data variables.product.prodname_dotcom %} if this directory does not already exist.
-2. In the `.github/workflows` directory, create a file named `github-actions-demo.yml`. For more information, see "[Creating new files](/github/managing-files-in-a-repository/creating-new-files)."
-3. Copy the following YAML contents into the `github-actions-demo.yml` file:
-    {% raw %}
-    ```yaml{:copy}
-    name: GitHub Actions Demo
-    on: [push]
-    jobs:
-      Explore-GitHub-Actions:
-        runs-on: ubuntu-latest
-        steps:
-          - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-          - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-          - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."{% endraw %}
-          - name: Check out repository code
-            uses: {% data reusables.actions.action-checkout %}{% raw %}
-          - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-          - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-          - name: List files in the repository
-            run: |
-              ls ${{ github.workspace }}
-          - run: echo "🍏 This job's status is ${{ job.status }}."
-
-    ```
-    {% endraw %}
-3. Scroll to the bottom of the page and select **Create a new branch for this commit and start a pull request**. Then, to create a pull request, click **Propose new file**.
-    ![Commit workflow file](/assets/images/help/repository/actions-quickstart-commit-new-file.png)
-
-Committing the workflow file to a branch in your repository triggers the `push` event and runs your workflow.
-
-## Viewing your workflow results
-
-{% data reusables.repositories.navigate-to-repo %}
-{% data reusables.repositories.actions-tab %}
-1. In the left sidebar, click the workflow you want to see.
-
-   ![Workflow list in left sidebar](/assets/images/help/repository/actions-quickstart-workflow-sidebar.png)
-1. From the list of workflow runs, click the name of the run you want to see.
-
-   ![Name of workflow run](/assets/images/help/repository/actions-quickstart-run-name.png)
-1. Under **Jobs** , click the **Explore-GitHub-Actions** job.
-
-   ![Locate job](/assets/images/help/repository/actions-quickstart-job.png)
-1. The log shows you how each of the steps was processed. Expand any of the steps to view its details.
-
-   ![Example workflow results](/assets/images/help/repository/actions-quickstart-logs.png)
-   
-   For example, you can see the list of files in your repository:
-   ![Example action detail](/assets/images/help/repository/actions-quickstart-log-detail.png)
-   
-## More starter workflows
-
-{% data reusables.actions.workflow-template-overview %}
-
-## More complex examples
-{% data reusables.actions.link-to-example-library %}
-
-## Next steps
-
-The example workflow you just added runs each time code is pushed to the branch, and shows you how {% data variables.product.prodname_actions %} can work with the contents of your repository. But this is only the beginning of what you can do with {% data variables.product.prodname_actions %}:
-
-- Your repository can contain multiple workflows that trigger different jobs based on different events. 
-- You can use a workflow to install software testing apps and have them automatically test your code on {% data variables.product.prodname_dotcom %}'s runners. 
-
-{% data variables.product.prodname_actions %} can help you automate nearly every aspect of your application development processes. Ready to get started? Here are some helpful resources for taking your next steps with {% data variables.product.prodname_actions %}:
-
-- "[Learn {% data variables.product.prodname_actions %}](/actions/learn-github-actions)" for an in-depth tutorial.
+ 
