@@ -1,26 +1,104 @@
+Todo
+1. Whitespace after code block
+5. Replace ${GITHUB_TOKEN} with your PAT that was generated in Step 1, add link to step1
+6. Add a high level diagram like prerew->configure->execute, something like that. it looks too bland
+8. How to make the sub more prominent - shoould we use Note or *** or something else
+
+
+
 ## Introduction
 
 GitHub Actions can be run in GitHub-hosted cloud or self hosted environments. Self-hosted runners offer more control of hardware, operating system, and software tools than GitHub-hosted runners provide
 
-With just a few configurations, you can set up your kubernetes (K8s) cluster to be a self-hosted environment.In this guide, we will deploy Actions Runner controller (ACR) into your K8s cluster, and then target that cluster to run GitHub Action workflows.
+With just a few configurations, you can set up your kubernetes (K8s) cluster to be a self-hosted environment.In this guide, we will deploy Actions Runner controller (ARC) into your K8s cluster, and then target that cluster to run GitHub Action workflows.
 
-## Step 1: Setup your K8s Environment
-<details><summary>Setup K8s environment</summary>
-If you don't have a K8s environment, you can install a local environment using [minikube]([url](https://minikube.sigs.k8s.io/docs/start/)).
+## Setup your K8s Environment
+<details><summary>Create a K8s cluster, if not available</summary>
+   <sub>
+If you don't have a K8s environment, you can install a local environment using minikube - (https://minikube.sigs.k8s.io/docs/start/)
+   </sub>
 </details>
 
-1. Run the following kubectl command to install certmgr in your environment. For more information, see [certmgr]([url](https://cert-manager.io/docs/installation/))
+#### :one: Install certmgr in your environment. For more information, see [certmgr](https://cert-manager.io/docs/installation/)
+
 ```yaml{:copy}
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.2/cert-manager.yaml
 ```
 <sub> This command uses v1.8.2. Please replace with a later version, if available.</sub>
 
-2. Next, we need a Personal Access Token (PAT) for ACR to authenticate with GitHub.
+#### :two: Next, Generate a Personal Access Token (PAT) for ARC to authenticate with GitHub.
    - Login to GitHub account and Navigate to https://github.com/settings/tokens/new
-   - Select  repo
-   - Click Generate Token and then copy the token locally ( we’ll need it later) 
+   - Select  **repo**
+   - Click **Generate Token** and then copy the token locally ( we’ll need it later)
 
-👏🏻👏🏻 That’s all the setup we need, next let's deploy and configure ACR
 
+
+***👏 That’s all the setup we need, next let's deploy and configure ARC 👏***
+
+
+## Deploy and Configure ARC
+#### :one: Install ARC on your K8s cluster
+
+```yaml{:copy}
+kubectl apply -f \n
+https://github.com/actions-runner-controller/actions-runner-controller/\n
+releases/download/v0.22.0/actions-runner-controller.yaml
+```
+<sub>Replace "v0.22.0" with the version you wish to deploy </sub>
+ 
+
+#### :two: Configure Personal Access Token
+
+
+```yaml{:copy}
+kubectl create secret generic controller-manager \
+    -n actions-runner-system \
+    --from-literal=github_token=${GITHUB_TOKEN}
+````
+<sub>Replace ${GITHUB_TOKEN} with your PAT that was generated in Step 1 </sub>
+
+#### :three: Create the GitHub self hosted runners and configure to run against your repository
+Create a runnerdeployment.yaml file containing
+
+*runnerdeployment.yaml*
+```yaml{:copy}
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: example-runnerdeploy
+spec:
+  replicas: 1
+  template:
+    spec:
+      repository: mumoshu/actions-runner-controller-ci
+````
+<sub> Note :- Replace mumoshu/actions-runner-controller-ci with the full path to your github repository </sub>
+
+Apply this file to your K8s cluster
+```yaml{:copy}
+$ kubectl apply -f runnerdeployment.yaml runnerdeployment.actions.summerwind.dev/example-runnerdeploy created
+````
+ 
+***🎉We are done - now we should have self hosted runners in K8s configured to your repository, next, lets verify and execute some workflows.🎉***
+ 
+## Verify and execute workflows
+#### :one: Verify your setup is successful with 
+```yaml{:copy}
+$ kubectl get runners
+NAME                             REPOSITORY                             STATUS
+example-runnerdeploy2475h595fr   mumoshu/actions-runner-controller-ci   Running
+
+$ kubectl get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+example-runnerdeploy2475ht2qbr 2/2     Running   0          1m
+````
+Also,this runner has been registered directly to the defined repository, you can see it in repository settings. For more information , see [settings](https://docs.github.com/en/actions/hosting-your-own-runners/monitoring-and-troubleshooting-self-hosted-runners#checking-the-status-of-a-self-hosted-runner)
+
+#### :two: You are ready to execute workflows against this self hosted runner. 
+GitHub documentation lists the steps to target Actions against self hosted runners. For more information, see [Using self-hosted runners in a workflow - GitHub Docs](https://docs.github.com/en/actions/hosting-your-own-runners/using-self-hosted-runners-in-a-workflow#using-self-hosted-runners-in-a-workflow)
+Gthub also has a quick start guide to get started on Actions, For more information, see  [Quick start Guide to GitHub Actions](https://docs.github.com/en/actions/quickstart)
+
+## Next steps
+ARC provides several interesting features and capabilities. For more information, see readme
 
  
