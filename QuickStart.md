@@ -56,6 +56,7 @@ kubectl create secret generic controller-manager \
 <sub> *note:- Replace ${GITHUB_TOKEN} with your PAT that was generated in Step 1 </sub>
 
 :three: Create the GitHub self hosted runners and configure to run against your repository
+
 Create a runnerdeployment.yaml file containing
 
 *runnerdeployment.yaml*
