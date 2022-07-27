@@ -74,7 +74,7 @@ spec:
 
 Apply this file to your K8s cluster
 ```shell
-$ kubectl apply -f runnerdeployment.yaml runnerdeployment.actions.summerwind.dev/example-runnerdeploy created
+$ kubectl apply -f runnerdeployment.yaml
 ````
  
 
