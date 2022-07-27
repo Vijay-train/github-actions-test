@@ -104,4 +104,7 @@ There's also has a quick start guide to get started on Actions, For more informa
 ## Next steps
 ARC provides several interesting features and capabilities. For more information, see [readme](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/README.md)
 
+## todo ( section will be deleted before raising PR)
+- include HELM chart details?
+
  
