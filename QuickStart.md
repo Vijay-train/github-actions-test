@@ -1,9 +1,8 @@
 Todo
-1. Whitespace after code block
-5. Replace ${GITHUB_TOKEN} with your PAT that was generated in Step 1, add link to step1
-6. Add a high level diagram like prerew->configure->execute, something like that. it looks too bland
-8. How to make the sub more prominent - shoould we use Note or *** or something else
 
+
+6. Add a high level diagram like prerew->configure->execute, something like that. it looks too bland
+x) check in dark and light theme
 
 
 ## Introduction
@@ -24,7 +23,7 @@ If you don't have a K8s environment, you can install a local environment using m
 ```yaml{:copy}
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.2/cert-manager.yaml
 ```
-<sub> This command uses v1.8.2. Please replace with a later version, if available.</sub>
+<sub> *note:- This command uses v1.8.2. Please replace with a later version, if available.</sub>
 
 #### :two: Next, Generate a Personal Access Token (PAT) for ARC to authenticate with GitHub.
    - Login to GitHub account and Navigate to https://github.com/settings/tokens/new
@@ -44,7 +43,7 @@ kubectl apply -f \n
 https://github.com/actions-runner-controller/actions-runner-controller/\n
 releases/download/v0.22.0/actions-runner-controller.yaml
 ```
-<sub>Replace "v0.22.0" with the version you wish to deploy </sub>
+<sub> *note:- Replace "v0.22.0" with the version you wish to deploy </sub>
  
 
 #### :two: Configure Personal Access Token
@@ -55,7 +54,7 @@ kubectl create secret generic controller-manager \
     -n actions-runner-system \
     --from-literal=github_token=${GITHUB_TOKEN}
 ````
-<sub>Replace ${GITHUB_TOKEN} with your PAT that was generated in Step 1 </sub>
+<sub> *note:- Replace ${GITHUB_TOKEN} with your PAT that was generated in Step 1 </sub>
 
 #### :three: Create the GitHub self hosted runners and configure to run against your repository
 Create a runnerdeployment.yaml file containing
@@ -72,7 +71,7 @@ spec:
     spec:
       repository: mumoshu/actions-runner-controller-ci
 ````
-<sub> Note :- Replace mumoshu/actions-runner-controller-ci with the full path to your github repository </sub>
+<sub> *note:- Replace mumoshu/actions-runner-controller-ci with the full path to your github repository </sub>
 
 Apply this file to your K8s cluster
 ```yaml{:copy}
