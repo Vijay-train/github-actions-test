@@ -11,20 +11,24 @@ In this guide, we will setup pre-requistes ,deploy Actions Runner controller (AR
 
 
 
-## Setup your K8s Environment
+## Setup your K8s cluster
 
-<details><summary>Create a K8s cluster, if not available</summary>
+<details><summary><sub>Create a K8s cluster, if not available</sub></summary>
    <sub>
-If you don't have a K8s environment, you can install a local environment using minikube - (https://minikube.sigs.k8s.io/docs/start/)
+If you don't have a K8s cluster, you can install a local environment using minikube - (https://minikube.sigs.k8s.io/docs/start/)
    </sub>
 </details>
 
-:one: Install certmgr in your environment. For more information, see [certmgr](https://cert-manager.io/docs/installation/)
+:one: Install cert-manager in your cluster. For more information, see [cert-manager](https://cert-manager.io/docs/installation/)
 
 ```shell
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.2/cert-manager.yaml
 ```
 <sub> *note:- This command uses v1.8.2. Please replace with a later version, if available.</sub>
+
+
+>You may also install cert-manager using Helm. For instructions, see [Installing with Helm](https://cert-manager.io/docs/installation/helm/#installing-with-helm)
+
 
 :two: Next, Generate a Personal Access Token (PAT) for ARC to authenticate with GitHub.
    - Login to GitHub account and Navigate to https://github.com/settings/tokens/new
@@ -35,8 +39,37 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 
 ## Deploy and Configure ARC
-:one: Install ARC on your K8s cluster
+1️⃣ Deploy  and configure ARC on your K8s cluster. You may use Helm or Kubectl.
 
+
+<details><summary>Helm deployment</summary>
+
+ ##### Create a new file called `custom-values.yaml` containing...
+
+ ```yaml
+authSecret:
+  github_token: REPLACE_YOUR_TOKEN_HERE
+  create: true
+
+```
+<sub> *note:- Replace REPLACE_YOUR_TOKEN_HERE with your PAT that was generated in Step 1 </sub>
+
+##### Add repository
+```shell
+helm repo add actions-runner-controller https://actions-runner-controller.github.io/actions-runner-controller
+```
+
+##### Install Helm chart
+```shell
+helm install -f custom-values.yaml --wait --namespace actions-runner-system \
+  --create-namespace actions-runner-controller \
+  actions-runner-controller/actions-runner-controller
+```
+</details>
+
+<details><summary>Kubectl deployment</summary>
+
+##### Deploy ARC
 ```shell
 kubectl apply -f \
 https://github.com/actions-runner-controller/actions-runner-controller/\
@@ -45,21 +78,20 @@ releases/download/v0.22.0/actions-runner-controller.yaml
 <sub> *note:- Replace "v0.22.0" with the version you wish to deploy </sub>
  
 
-:two: Configure Personal Access Token
-
-
+##### Configure Personal Access Token
 ```shell
 kubectl create secret generic controller-manager \
     -n actions-runner-system \
-    --from-literal=github_token=${GITHUB_TOKEN}
+    --from-literal=github_token=REPLACE_YOUR_TOKEN_HERE
 ````
-<sub> *note:- Replace ${GITHUB_TOKEN} with your PAT that was generated in Step 1 </sub>
+<sub> *note:- Replace REPLACE_YOUR_TOKEN_HERE with your PAT that was generated in Step 1 </sub>
+  
+  </details>
 
-:three: Create the GitHub self hosted runners and configure to run against your repository
+2️⃣ Create the GitHub self hosted runners and configure to run against your repository
 
-Create a runnerdeployment.yaml file containing
+Create a `runnerdeployment.yaml` file containing
 
-*runnerdeployment.yaml*
 ```yaml
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
@@ -105,7 +137,6 @@ There's also has a quick start guide to get started on Actions, For more informa
 ## Next steps
 ARC provides several interesting features and capabilities. For more information, see [readme](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/README.md)
 
-## todo ( section will be deleted before raising PR)
-- include HELM chart details?
+
 
  
