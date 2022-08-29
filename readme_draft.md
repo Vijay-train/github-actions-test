@@ -1,14 +1,16 @@
 # Actions Runner Controller (ARC)
 
 
-Github Actions automates the deployment of code to different environments, including production. GitHub Actions can be run in GitHub-hosted cloud or self hosted environments. Self-hosted environments offer more control of hardware, operating system, and software tools than GitHub-hosted runners provide. They can be Self-hosted runners can be physical, virtual, in a container. Containerized environments are lightweight, loosely coupled, highly efficient and can be managed centrally. However, they are not straightforward to use.
+Github Actions automates the deployment of code to different environments, including production. The environments contain the `Github Runner` software which executes the automation. The `Github Runner` can be run in GitHub-hosted cloud or self hosted environments. Self-hosted runners offer more control of hardware, operating system, and software tools than GitHub-hosted runners provide. They can be run on physical machines, virtual machines, or  in a container. 
 
-`Actions Runner Controller(ARC)` makes it simpler to run self hosted runners on Kubernetes(K8s) managed containers. Just create a Runner resource on your K8s clister, and it will run and operate the self-hosted runner for the specified repository. Combined with Kubernetes RBAC, you can also build simple Self-hosted runners as a Service.
+Containerized environments are lightweight, loosely coupled, highly efficient and can be managed centrally. However, they are not straightforward to use. 
+
+`Actions Runner Controller(ARC)` makes it simpler to run self hosted runners on Kubernetes(K8s) containers. `ARC` is a K8s controller to create self-hosted runners on your K8s cluster.
 
 With `ARC` you can : 
 - **Deploy your self hosted runners on Kubernetes cluster** with a simple set of commands.
-- **Auto scale runners** based on needs.
-- **across Github editions** including Github Enterprise editions and Github Enterprise Cloud.
+- **Auto scale runners** based on demand.
+- **Setup across Github editions** including Github Enterprise editions and Github Enterprise Cloud.
  
 
 > Though `actions-runner-controller` is used in production environments, it is still in its early stage of development, hence versioned 0.x. `actions-runner-controller` complies to Semantic Versioning 2.0.0 in which v0.x means that there could be backward-incompatible changes for every release.
@@ -26,7 +28,7 @@ To understand a high overview of how ARC works, please refer to [Overview](https
 
 
 # Learn more
-
+For more detailed information, please refer to more detailed documentation below: 
 - [Actions Runner controller (Overview)](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/Actions-Runner-Controller-Overview.md)
 - [Guides](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/QuickStartGuide.md)
   - Quick Start
@@ -34,7 +36,7 @@ To understand a high overview of how ARC works, please refer to [Overview](https
   - Automatically scale runners using ACR
   - Using ACR across organizations
 - [Authentication](https://github.com/actions-runner-controller/actions-runner-controller#setting-up-authentication-with-github-api)
-- [Using Runners with RunnerDeplpyments and](https://github.com/actions-runner-controller/actions-runner-controller#usage)
+- [Using Runners](https://github.com/actions-runner-controller/actions-runner-controller#usage)
   - With RunnerDeployments
   - With RunnerSets
 - [Automatically scale runners](https://github.com/actions-runner-controller/actions-runner-controller#autoscaling)
