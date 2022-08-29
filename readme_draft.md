@@ -1,4 +1,4 @@
-# Actions Runner Controller (ARC)
+# Actions Runner Controller (ARC) [sample readme]
 
 
 Github Actions automates the deployment of code to different environments, including production. The environments contain the `Github Runner` software which executes the automation. The `Github Runner` can be run in GitHub-hosted cloud or self hosted environments. Self-hosted runners offer more control of hardware, operating system, and software tools than GitHub-hosted runners provide. They can be run on physical machines, virtual machines, or  in a container. 
