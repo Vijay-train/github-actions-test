@@ -1,4 +1,4 @@
-# Actions Runner Controller (ARC) from vscode
+# Actions Runner Controller (ARC)
 
 
 
@@ -20,9 +20,10 @@ The documentation is kept inline with master@HEAD, we do our best to highlight a
 The best way to get started is to first read the [ARC overview](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/Actions-Runner-Controller-Overview.md) and then head over to the [Quick start guide](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/QuickStartGuide.md). 🚀
 
 
-
 ## Learn more
 
 ## Contributing
+We welcome contributions from the community.For more details on contributing to the project (including requirements) please check out [Getting Started with Contributing](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/CONTRIBUTING.md)
 
 ## Troubleshooting
+We are very happy to help you with any issues you have. Please check out the [Troubleshooting](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/TROUBLESHOOTING.md) section for common issues.
