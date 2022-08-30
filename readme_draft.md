@@ -21,9 +21,9 @@ The documentation is kept inline with master@HEAD, we do our best to highlight a
  
 # Lets try it
 
-Get up and running with ARC with only a few steps. For more details, refer to [Quick start guide](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/QuickStartGuide.md). 🚀
+ARC can be setup with just a handful of commands. For more details, refer to [Quick start guide](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/QuickStartGuide.md). 🚀
 
-To understand a high overview of how ARC works, please refer to [Overview](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/Actions-Runner-Controller-Overview.md)
+For a high-level overview of how ARC works, please refer to [ARC Overview](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/Actions-Runner-Controller-Overview.md)
 
 
 
