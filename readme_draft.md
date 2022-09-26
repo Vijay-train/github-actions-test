@@ -1,4 +1,8 @@
+
 # Actions Runner Controller (ARC)
+
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6061/badge)](https://bestpractices.coreinfrastructure.org/projects/6061)
+[![awesome-runners](https://img.shields.io/badge/listed%20on-awesome--runners-blue.svg)](https://github.com/jonico/awesome-runners)
 
 GitHub Actions automates the deployment of code to different environments, including production. The environments contain the `GitHub Runner` software which executes the automation. `GitHub Runner` can be run in GitHub-hosted cloud or self hosted environments. Self-hosted environments offer more control of hardware, operating system, and software tools than GitHub-hosted runners provide. They can be run on physical machines, virtual machines, or  in a container.
 
@@ -135,7 +139,7 @@ NAME                           READY   STATUS    RESTARTS   AGE
 example-runnerdeploy2475ht2qbr 2/2     Running   0          1m
 ````
 
-Also, this runner has been registered directly to the specified repository, you can see it in repository settings. For more information, see "[settings](https://docs.github.com/en/actions/hosting-your-own-runners/monitoring-and-troubleshooting-self-hosted-runners#checking-the-status-of-a-self-hosted-runner)."
+Also, this runner has been registered directly to the specified repository, you can see it in repository settings. For more information, see "[Checking the status of a self hosted runner - GitHub Docs](https://docs.github.com/en/actions/hosting-your-own-runners/monitoring-and-troubleshooting-self-hosted-runners#checking-the-status-of-a-self-hosted-runner)."
 
 :two: You are ready to execute workflows against this self hosted runner. 
 GitHub documentation lists the steps to target Actions against self hosted runners. For more information, see "[Using self-hosted runners in a workflow - GitHub Docs](https://docs.github.com/en/actions/hosting-your-own-runners/using-self-hosted-runners-in-a-workflow#using-self-hosted-runners-in-a-workflow)."
@@ -148,8 +152,8 @@ For more detailed documentation, please refer to [Detailed Documentation](https:
 
 ## Contributing
 
-We welcome contributions from the community.For more details on contributing to the project (including requirements) please check out [Getting Started with Contributing](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/CONTRIBUTING.md)
+We welcome contributions from the community. For more details on contributing to the project (including requirements) please check out [Getting Started with Contributing](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/CONTRIBUTING.md)
 
 ## Troubleshooting
 
-We are very happy to help you with any issues you have. Please check out the [Troubleshooting](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/TROUBLESHOOTING.md) section for common issues.
+We are very happy to help you with any issues you have. Please refer to the [Troubleshooting](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/TROUBLESHOOTING.md) section for common issues.
