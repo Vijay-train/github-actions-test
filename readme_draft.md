@@ -4,15 +4,11 @@
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6061/badge)](https://bestpractices.coreinfrastructure.org/projects/6061)
 [![awesome-runners](https://img.shields.io/badge/listed%20on-awesome--runners-blue.svg)](https://github.com/jonico/awesome-runners)
 
-GitHub Actions automates the deployment of code to different environments, including production. The environments contain the `GitHub Runner` software which executes the automation. `GitHub Runner` can be run in GitHub-hosted cloud or self hosted environments. Self-hosted environments offer more control of hardware, operating system, and software tools than GitHub-hosted runners provide. They can be run on physical machines, virtual machines, or  in a container.
+GitHub Actions automates the deployment of code to different environments, including production. The environments contain the `GitHub Runner` software which executes the automation. `GitHub Runner` can be run in GitHub-hosted cloud or self hosted environments. Self-hosted environments offer more control of hardware, operating system, and software tools than GitHub-hosted runners provide. They can be run on physical machines, virtual machines, or  in a container. Containerized environments are lightweight, loosely coupled, highly efficient and can be managed centrally. However, they are not straightforward to use.
 
-Containerized environments are lightweight, loosely coupled, highly efficient and can be managed centrally. However, they are not straightforward to use.
+`Actions Runner Controller (ARC)` makes it simpler to run self hosted environments on Kubernetes(K8s) cluster. With ARC you can :
 
-`Actions Runner Controller(ARC)` makes it simpler to run self hosted environments on Kubernetes(K8s) containers. ARC is a K8s controller to create self-hosted runners on your K8s cluster.
-
-With ARC you can :
-
-- **Deploy your self hosted runners on Kubernetes cluster** with a simple set of commands.
+- **Deploy self hosted runners on Kubernetes cluster** with a simple set of commands.
 - **Auto scale runners** based on demand.
 - **Setup across GitHub editions** including GitHub Enterprise editions and GitHub Enterprise Cloud.
 
@@ -24,7 +20,7 @@ For an overview of ARC, please refer to [ARC Overview](https://github.com/action
 
 ARC can be setup with just a few steps.
 
-In this section we will setup prerequisites, deploy Actions Runner controller (ARC) and then target that cluster to run GitHub Action workflows.
+In this section we will setup prerequisites, deploy ARC in a K8S cluster, and then run GitHub Action workflows on that cluster.
 
 ### Prerequisites
 
@@ -46,7 +42,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 :two: Next, Generate a Personal Access Token (PAT) for ARC to authenticate with GitHub.
 
-- Login to GitHub account and Navigate to "[Create new Token](https://github.com/settings/tokens/new)."
+- Login to your GitHub account and Navigate to "[Create new Token](https://github.com/settings/tokens/new)."
 - Select  **repo**.
 - Click **Generate Token** and then copy the token locally ( we’ll need it later).
 
@@ -56,7 +52,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 <details><summary>Helm deployment</summary>
 
-#### Add repository
+##### Add repository
 
 ```shell
 helm repo add actions-runner-controller https://actions-runner-controller.github.io/actions-runner-controller
@@ -71,7 +67,7 @@ helm upgrade --install --namespace actions-runner-system --create-namespace\
   --wait actions-runner-controller actions-runner-controller/actions-runner-controller
 ```
 
-<sub> *note:- Replace REPLACE_YOUR_TOKEN_HERE with your PAT that was generated in Step 1 </sub>
+<sub> *note:- Replace REPLACE_YOUR_TOKEN_HERE with your PAT that was generated previously. </sub>
 </details>
 
 <details><summary>Kubectl deployment</summary>
@@ -94,7 +90,7 @@ kubectl create secret generic controller-manager \
     --from-literal=github_token=REPLACE_YOUR_TOKEN_HERE
 ````
 
-<sub> *note:- Replace REPLACE_YOUR_TOKEN_HERE with your PAT that was generated in Step 1. </sub>
+<sub> *note:- Replace REPLACE_YOUR_TOKEN_HERE with your PAT that was generated previously.</sub>
   
   </details>
 
@@ -123,7 +119,7 @@ kubectl apply -f runnerdeployment.yaml
 >
 >🎉 We are done - now we should have self hosted runners running in K8s configured to your repository.  🎉
 >
-> Up Next - lets verify and execute some workflows.
+> Next - lets verify our setup and execute some workflows.
 
 ### Verify and Execute Workflows
 
@@ -152,7 +148,7 @@ For more detailed documentation, please refer to [Detailed Documentation](https:
 
 ## Contributing
 
-We welcome contributions from the community. For more details on contributing to the project (including requirements) please check out [Getting Started with Contributing](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/CONTRIBUTING.md)
+We welcome contributions from the community. For more details on contributing to the project (including requirements), please refer to  [Getting Started with Contributing](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/CONTRIBUTING.md)
 
 ## Troubleshooting
 
