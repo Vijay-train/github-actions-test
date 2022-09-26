@@ -142,14 +142,14 @@ GitHub documentation lists the steps to target Actions against self hosted runne
 
 There's also has a quick start guide to get started on Actions, For more information, see "[Quick start Guide to GitHub Actions](https://docs.github.com/en/actions/quickstart)."
 
-# Learn more
+## Learn more
 
 For more detailed documentation, please refer to [Detailed Documentation](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/QuickStartGuide.md).
 
-# Contributing
+## Contributing
 
 We welcome contributions from the community.For more details on contributing to the project (including requirements) please check out [Getting Started with Contributing](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/CONTRIBUTING.md)
 
-# Troubleshooting
+## Troubleshooting
 
 We are very happy to help you with any issues you have. Please check out the [Troubleshooting](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/TROUBLESHOOTING.md) section for common issues.
