@@ -140,16 +140,16 @@ Also, this runner has been registered directly to the specified repository, you 
 
 :two: You are ready to execute workflows against this self-hosted runner. For more information, see "[Using self-hosted runners in a workflow - GitHub Docs](https://docs.github.com/en/actions/hosting-your-own-runners/using-self-hosted-runners-in-a-workflow#using-self-hosted-runners-in-a-workflow)."
 
-There's also has a quick start guide to get started on Actions, For more information, see "[Quick start Guide to GitHub Actions](https://docs.github.com/en/actions/quickstart)."
+There is also a quick start guide to get started on Actions, For more information, please refer to "[Quick start Guide to GitHub Actions](https://docs.github.com/en/actions/quickstart)."
 
 ## Learn more
 
-For more detailed documentation, please refer to [Detailed Documentation](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/QuickStartGuide.md).
+For more detailed documentation, please refer to "[Detailed Documentation](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/QuickStartGuide.md)."
 
 ## Contributing
 
-We welcome contributions from the community. For more details on contributing to the project (including requirements), please refer to  [Getting Started with Contributing](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/CONTRIBUTING.md)
+We welcome contributions from the community. For more details on contributing to the project (including requirements), please refer to "[Getting Started with Contributing](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/CONTRIBUTING.md)"
 
 ## Troubleshooting
 
-We are very happy to help you with any issues you have. Please refer to the [Troubleshooting](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/TROUBLESHOOTING.md) section for common issues.
+We are very happy to help you with any issues you have. Please refer to the "[Troubleshooting](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/TROUBLESHOOTING.md)" section for common issues.
