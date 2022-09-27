@@ -148,7 +148,7 @@ For more detailed documentation, please refer to "[Detailed Documentation](https
 
 ## Contributing
 
-We welcome contributions from the community. For more details on contributing to the project (including requirements), please refer to "[Getting Started with Contributing](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/CONTRIBUTING.md)"
+We welcome contributions from the community. For more details on contributing to the project (including requirements), please refer to "[Getting Started with Contributing](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/CONTRIBUTING.md)."
 
 ## Troubleshooting
 
