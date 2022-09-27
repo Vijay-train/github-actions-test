@@ -98,7 +98,7 @@ kubectl create secret generic controller-manager \
 
 2️⃣ Create the GitHub self hosted runners and configure to run against your repository.
 
-Create a `runnerdeployment.yaml` file containing..
+Create a `runnerdeployment.yaml` file and copy the following YAML contents into it:
 
 ```yaml
 apiVersion: actions.summerwind.dev/v1alpha1
