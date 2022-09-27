@@ -118,10 +118,10 @@ Apply this file to your K8s cluster.
 kubectl apply -f runnerdeployment.yaml
 ````
 
-🎉 We are done - now we should have self hosted runners running in K8s configured to your repository.  🎉
+*🎉 We are done - now we should have self hosted runners running in K8s configured to your repository.  🎉
 
 Next - lets verify our setup and execute some workflows.
-
+*
 ### Verify and Execute Workflows
 
 :one: Verify your setup is successful with..
