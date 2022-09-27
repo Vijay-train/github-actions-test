@@ -4,9 +4,11 @@
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6061/badge)](https://bestpractices.coreinfrastructure.org/projects/6061)
 [![awesome-runners](https://img.shields.io/badge/listed%20on-awesome--runners-blue.svg)](https://github.com/jonico/awesome-runners)
 
-GitHub Actions automates the deployment of code to different environments, including production. The environments contain the `GitHub Runner` software which executes the automation. `GitHub Runner` can be run in GitHub-hosted cloud or self hosted environments. Self-hosted environments offer more control of hardware, operating system, and software tools than GitHub-hosted runners provide. They can be run on physical machines, virtual machines, or  in a container. Containerized environments are lightweight, loosely coupled, highly efficient and can be managed centrally. However, they are not straightforward to use.
+GitHub Actions automates the deployment of code to different environments, including production. The environments contain the `GitHub Runner` software which executes the automation. `GitHub Runner` can be run in GitHub-hosted cloud or self-hosted environments. Self-hosted environments offer more control of hardware, operating system, and software tools. They can be run on physical machines, virtual machines, or in a container. Containerized environments are lightweight, loosely coupled, highly efficient and can be managed centrally. However, they are not straightforward to use.
 
-`Actions Runner Controller (ARC)` makes it simpler to run self hosted environments on Kubernetes(K8s) cluster. With ARC you can :
+`Actions Runner Controller (ARC)` makes it simpler to run self hosted environments on Kubernetes(K8s) cluster. 
+
+With ARC you can :
 
 - **Deploy self hosted runners on Kubernetes cluster** with a simple set of commands.
 - **Auto scale runners** based on demand.
@@ -20,7 +22,7 @@ For an overview of ARC, please refer to [ARC Overview](https://github.com/action
 
 ARC can be setup with just a few steps.
 
-In this section we will setup prerequisites, deploy ARC in a K8S cluster, and then run GitHub Action workflows on that cluster.
+In this section we will setup prerequisites, deploy ARC in a K8s cluster, and then run GitHub Action workflows on that cluster.
 
 ### Prerequisites
 
@@ -116,10 +118,9 @@ Apply this file to your K8s cluster.
 kubectl apply -f runnerdeployment.yaml
 ````
 
->
->🎉 We are done - now we should have self hosted runners running in K8s configured to your repository.  🎉
->
-> Next - lets verify our setup and execute some workflows.
+🎉 We are done - now we should have self hosted runners running in K8s configured to your repository.  🎉
+
+Next - lets verify our setup and execute some workflows.
 
 ### Verify and Execute Workflows
 
