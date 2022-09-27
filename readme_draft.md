@@ -124,7 +124,7 @@ Next - lets verify our setup and execute some workflows.
 
 ### Verify and Execute Workflows
 
-:one: Verify your setup is successful with..
+:one: Verify that your setup is successful:
 ```shell
 
 $ kubectl get runners
